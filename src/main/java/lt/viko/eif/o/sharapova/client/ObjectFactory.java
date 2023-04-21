@@ -54,19 +54,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetLibraryResponse }
+     * Create an instance of {@link GetLibrariesByBookRequest }
      * 
      */
-    public GetLibraryResponse createGetLibraryResponse() {
-        return new GetLibraryResponse();
+    public GetLibrariesByBookRequest createGetLibrariesByBookRequest() {
+        return new GetLibrariesByBookRequest();
     }
 
     /**
-     * Create an instance of {@link GetLibraryRequest }
+     * Create an instance of {@link GetLibraryByNameRequest }
      * 
      */
-    public GetLibraryRequest createGetLibraryRequest() {
-        return new GetLibraryRequest();
+    public GetLibraryByNameRequest createGetLibraryByNameRequest() {
+        return new GetLibraryByNameRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetLibraryByNameResponse }
+     * 
+     */
+    public GetLibraryByNameResponse createGetLibraryByNameResponse() {
+        return new GetLibraryByNameResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetLibrariesByBookResponse }
+     * 
+     */
+    public GetLibrariesByBookResponse createGetLibrariesByBookResponse() {
+        return new GetLibrariesByBookResponse();
     }
 
     /**

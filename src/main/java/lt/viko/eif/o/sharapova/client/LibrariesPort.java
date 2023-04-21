@@ -6,7 +6,6 @@ import jakarta.jws.WebParam;
 import jakarta.jws.WebResult;
 import jakarta.jws.WebService;
 import jakarta.jws.soap.SOAPBinding;
-
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 
@@ -26,14 +25,26 @@ public interface LibrariesPort {
 
     /**
      * 
-     * @param getLibraryRequest
+     * @param getLibrariesByBookRequest
      * @return
-     *     returns lt.viko.eif.o.sharapova.client.GetLibraryResponse
+     *     returns lt.viko.eif.o.sharapova.client.GetLibrariesByBookResponse
      */
     @WebMethod
-    @WebResult(name = "getLibraryResponse", targetNamespace = "http://spring.io/guides/gs-producing-web-service", partName = "getLibraryResponse")
-    public GetLibraryResponse getLibrary(
-        @WebParam(name = "getLibraryRequest", targetNamespace = "http://spring.io/guides/gs-producing-web-service", partName = "getLibraryRequest")
-        GetLibraryRequest getLibraryRequest);
+    @WebResult(name = "getLibrariesByBookResponse", targetNamespace = "http://spring.io/guides/gs-producing-web-service", partName = "getLibrariesByBookResponse")
+    public GetLibrariesByBookResponse getLibrariesByBook(
+        @WebParam(name = "getLibrariesByBookRequest", targetNamespace = "http://spring.io/guides/gs-producing-web-service", partName = "getLibrariesByBookRequest")
+        GetLibrariesByBookRequest getLibrariesByBookRequest);
+
+    /**
+     * 
+     * @param getLibraryByNameRequest
+     * @return
+     *     returns lt.viko.eif.o.sharapova.client.GetLibraryByNameResponse
+     */
+    @WebMethod
+    @WebResult(name = "getLibraryByNameResponse", targetNamespace = "http://spring.io/guides/gs-producing-web-service", partName = "getLibraryByNameResponse")
+    public GetLibraryByNameResponse getLibraryByName(
+        @WebParam(name = "getLibraryByNameRequest", targetNamespace = "http://spring.io/guides/gs-producing-web-service", partName = "getLibraryByNameRequest")
+        GetLibraryByNameRequest getLibraryByNameRequest);
 
 }

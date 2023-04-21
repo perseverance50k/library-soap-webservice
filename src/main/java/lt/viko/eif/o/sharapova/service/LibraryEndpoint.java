@@ -1,7 +1,9 @@
 package lt.viko.eif.o.sharapova.service;
 
-import lt.viko.eif.o.sharapova.client.GetLibraryRequest;
-import lt.viko.eif.o.sharapova.client.GetLibraryResponse;
+import lt.viko.eif.o.sharapova.client.GetLibrariesByBookRequest;
+import lt.viko.eif.o.sharapova.client.GetLibrariesByBookResponse;
+import lt.viko.eif.o.sharapova.client.GetLibraryByNameRequest;
+import lt.viko.eif.o.sharapova.client.GetLibraryByNameResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -19,11 +21,20 @@ public class LibraryEndpoint {
         this.libraryRepository = libraryRepository;
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getLibraryRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getLibraryByNameRequest")
     @ResponsePayload
-    public GetLibraryResponse getLibrary(@RequestPayload GetLibraryRequest request) {
-        GetLibraryResponse response = new GetLibraryResponse();
-        response.setLibrary(libraryRepository.findLibrary(request.getName()));
+    public GetLibraryByNameResponse getLibraryByName(@RequestPayload GetLibraryByNameRequest request) {
+        GetLibraryByNameResponse response = new GetLibraryByNameResponse();
+        response.setLibrary(libraryRepository.findLibraryByName(request.getName()));
+
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getLibrariesByBookRequest")
+    @ResponsePayload
+    public GetLibrariesByBookResponse getLibrariesByBook(@RequestPayload GetLibrariesByBookRequest request) {
+        GetLibrariesByBookResponse response = new GetLibrariesByBookResponse();
+        response.getLibraries().addAll(libraryRepository.findLibrariesByBook(request.getBook()));
 
         return response;
     }

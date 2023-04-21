@@ -36,6 +36,6 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 
     @Bean
     public XsdSchema librariesSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("xsd/library_xsd.xsd")); // FIXME: change target file
+        return new SimpleXsdSchema(new ClassPathResource("xsd/library_xsd.xsd"));
     }
 }

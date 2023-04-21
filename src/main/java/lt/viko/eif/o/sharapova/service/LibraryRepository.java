@@ -8,10 +8,7 @@ import org.springframework.util.Assert;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class LibraryRepository {
@@ -44,8 +41,26 @@ public class LibraryRepository {
         libraries.put(library.getLibraryName(), library);
     }
 
-    public lt.viko.eif.o.sharapova.client.Library findLibrary(String name) {
+    public lt.viko.eif.o.sharapova.client.Library findLibraryByName(String name) {
         Assert.notNull(name, "The library's name must not be null");
         return libraries.get(name);
+    }
+
+    public List<Library> findLibrariesByBook(String bookName) {
+        Assert.notNull(bookName, "The book's name must not be null");
+        List<Library> targetLibraries = new ArrayList<>();
+
+        libraries.forEach((libraryName, library) -> {
+            if (hasSpecifiedBook(library, bookName)) {
+                targetLibraries.add(library);
+            }
+        });
+
+        return targetLibraries;
+    }
+
+    private boolean hasSpecifiedBook(Library library, String bookName) {
+        Optional<Book> targetBook = library.getBooks().stream().filter(book -> book.getTitle().equalsIgnoreCase(bookName)).findFirst();
+        return targetBook.isPresent();
     }
 }

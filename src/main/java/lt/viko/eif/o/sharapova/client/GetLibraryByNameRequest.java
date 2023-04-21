@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="library" type="{http://spring.io/guides/gs-producing-web-service}library"/>
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,35 +29,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "library"
+    "name"
 })
-@XmlRootElement(name = "getLibraryResponse")
-public class GetLibraryResponse {
+@XmlRootElement(name = "getLibraryByNameRequest")
+public class GetLibraryByNameRequest {
 
     @XmlElement(required = true)
-    protected Library library;
+    protected String name;
 
     /**
-     * Gets the value of the library property.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
-     *     {@link Library }
+     *     {@link String }
      *     
      */
-    public Library getLibrary() {
-        return library;
+    public String getName() {
+        return name;
     }
 
     /**
-     * Sets the value of the library property.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Library }
+     *     {@link String }
      *     
      */
-    public void setLibrary(Library value) {
-        this.library = value;
+    public void setName(String value) {
+        this.name = value;
     }
+
 }
